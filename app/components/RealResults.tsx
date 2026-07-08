@@ -21,11 +21,7 @@ export default function RealResults() {
         {/* View more — destination will be wired up later */}
         <button
           type="button"
-          className="relative mt-6 block h-12 w-[200px] cursor-pointer overflow-hidden rounded-lg lg:absolute lg:left-[112px] lg:top-[527px] lg:mt-0"
-          style={{
-            backgroundImage:
-              "linear-gradient(124.196deg, #011a29 2.75%, #034d74 46.26%)",
-          }}
+          className="relative mt-6 block h-12 w-[200px] cursor-pointer overflow-hidden rounded-lg bg-[linear-gradient(124.196deg,#011a29_2.75%,#034d74_46.26%)] transition-colors duration-200 hover:bg-none hover:bg-brand-ocean lg:absolute lg:left-[112px] lg:top-[527px] lg:mt-0"
         >
           <span className="absolute left-[calc(50%-21px)] top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-sans text-base tracking-[-1px] text-white">
             View more

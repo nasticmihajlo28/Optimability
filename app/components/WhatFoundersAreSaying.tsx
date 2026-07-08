@@ -4,8 +4,14 @@ import { useState } from "react";
 import Image, { type StaticImageData } from "next/image";
 import spencerPhoto from "../images/image 5.png";
 import samPhoto from "../images/image 6.png";
+import louisPhoto from "../images/Louis Garoz testimonial.png";
+import johnnyPhoto from "../images/Johnny Mau testimonial.png";
+import nathanPhoto from "../images/Nathan Nazareth testimonial.png";
+import williamPhoto from "../images/Wiliam Philips testimonial.png";
+import guyPhoto from "../images/Guy Gregory testimonial.png";
+import braedenPhoto from "../images/Braeden Barkmeier testimonial.png";
 
-const TESTIMONIALS: {
+const ITEMS: {
   name: string;
   role: string;
   quote: string;
@@ -25,11 +31,49 @@ const TESTIMONIALS: {
       "\u201CIt is so different when you have fuel in your system and you're taken care of. This service is a no brainer.\u201D",
     photo: samPhoto,
   },
+  {
+    name: "Louis Garoz",
+    role: "Founder, Deal Maker",
+    quote:
+      "\u201CI am the strongest I have ever been and in the best shape of my entire life and it is all taken care of for me.\u201D",
+    photo: louisPhoto,
+  },
+  {
+    name: "Johnny Mau",
+    role: "Founder, Sales Syndicate",
+    quote:
+      "\u201CThis is number one by far. Best service delivery I have ever gotten, and I have spent more than $100K on stuff like this.\u201D",
+    photo: johnnyPhoto,
+  },
+  {
+    name: "Nathan Nazareth",
+    role: "8 Figure Serial Entrepreneur",
+    quote:
+      "\u201CWhen you have your health dialed in, progress is inevitable. I feel flow state all the time.\u201D",
+    photo: nathanPhoto,
+  },
+  {
+    name: "William Phillips",
+    role: "Founder, Maverick Oil",
+    quote:
+      "\u201CI feel better than I have ever felt in my life. It is just unbelievable. I did not know life could be this good.\u201D",
+    photo: williamPhoto,
+  },
+  {
+    name: "Guy Gregory",
+    role: "Founder, GB Defenders",
+    quote:
+      "\u201CGood sleep, good food, hydration, working out. It is these little things that are physically alleviating stress.\u201D",
+    photo: guyPhoto,
+  },
+  {
+    name: "Braeden Barkmeier",
+    role: "Internet Money Founder",
+    quote:
+      "\u201CSo much natural dopamine, and more vital and shredded than ever.\u201D",
+    photo: braedenPhoto,
+  },
 ];
-
-/* Repeated so the carousel has a third card peeking in from the right,
-   as in the design. Replace with real testimonials as they come in. */
-const ITEMS = [...TESTIMONIALS, ...TESTIMONIALS];
 
 function ArrowIcon({ direction }: { direction: "left" | "right" }) {
   return (
@@ -75,7 +119,7 @@ export default function WhatFoundersAreSaying() {
               aria-label="Previous testimonials"
               onClick={() => setIndex((i) => Math.max(0, i - 1))}
               disabled={index === 0}
-              className="flex size-12 cursor-pointer items-center justify-center rounded-lg bg-surface-muted text-black transition-opacity disabled:cursor-default disabled:opacity-45"
+              className="flex size-12 cursor-pointer items-center justify-center rounded-lg bg-surface-muted text-black transition-[opacity,background-color,color] duration-200 enabled:hover:bg-brand-ocean enabled:hover:text-white disabled:cursor-default disabled:opacity-45"
             >
               <ArrowIcon direction="left" />
             </button>
@@ -84,7 +128,7 @@ export default function WhatFoundersAreSaying() {
               aria-label="Next testimonials"
               onClick={() => setIndex((i) => Math.min(maxIndex, i + 1))}
               disabled={index === maxIndex}
-              className="flex size-12 cursor-pointer items-center justify-center rounded-lg bg-surface-muted text-black transition-opacity disabled:cursor-default disabled:opacity-45"
+              className="flex size-12 cursor-pointer items-center justify-center rounded-lg bg-surface-muted text-black transition-[opacity,background-color,color] duration-200 enabled:hover:bg-brand-ocean enabled:hover:text-white disabled:cursor-default disabled:opacity-45"
             >
               <ArrowIcon direction="right" />
             </button>

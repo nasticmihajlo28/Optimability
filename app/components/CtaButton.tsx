@@ -2,9 +2,9 @@ export default function CtaButton() {
   return (
     <a
       href="#qualify"
-      className="flex h-12 w-fit items-center gap-3.5 rounded-lg bg-white pl-4 pr-1.5"
+      className="group flex h-12 w-fit items-center gap-3.5 rounded-lg bg-white pl-4 pr-1.5 transition-colors duration-200 hover:bg-brand-ocean"
     >
-      <span className="font-sans text-base whitespace-nowrap text-brand-navy">
+      <span className="font-sans text-base whitespace-nowrap text-brand-navy transition-colors duration-200 group-hover:text-white">
         See If You Qualify
       </span>
       <span className="cta-gradient flex size-9 shrink-0 items-center justify-center rounded-md">

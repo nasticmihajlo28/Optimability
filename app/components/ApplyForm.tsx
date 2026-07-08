@@ -254,7 +254,7 @@ export default function ApplyForm() {
                   className={`font-sans text-base tracking-[-1px] text-black transition-opacity ${
                     step === 0
                       ? "cursor-default opacity-20"
-                      : "cursor-pointer opacity-60 hover:opacity-100"
+                      : "cursor-pointer opacity-60 hover:text-brand-ocean hover:opacity-100"
                   }`}
                 >
                   Back
@@ -263,7 +263,7 @@ export default function ApplyForm() {
                   type="button"
                   onClick={next}
                   disabled={!canContinue}
-                  className={`flex h-[2.375rem] w-[7.25rem] items-center justify-between rounded-lg bg-linear-to-br from-brand-deep to-brand-ocean pl-4 pr-1 transition-opacity ${
+                  className={`flex h-[2.375rem] w-[7.25rem] items-center justify-between rounded-lg bg-linear-to-br from-brand-deep to-brand-ocean pl-4 pr-1 transition-[opacity,background-image,background-color] duration-200 enabled:hover:bg-none enabled:hover:bg-brand-ocean ${
                     canContinue ? "cursor-pointer" : "cursor-default opacity-50"
                   }`}
                 >

@@ -6,32 +6,32 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "What is Optimability?",
     answer:
-      "Optimability is a done-for-you health optimization service. We combine lab testing, wearable data, and a dedicated team that plans your nutrition, training, and recovery — so you perform at your best without managing any of it yourself.",
+      "Optimability installs and operates health infrastructure for founders and teams. The system turns diagnostics, training, food, supplements, recovery, and testing into one execution layer.",
   },
   {
     question: "Is this just lab testing?",
     answer:
-      "No. Labs are only the starting point. We turn your results into a complete plan — meals, training, supplements, and habits — and our team keeps adjusting it as your data changes.",
+      "No. Labs are one input. Optimability uses labs, wearables, intake, goals, training history, and adherence to build the plan and run the next week.",
   },
   {
     question: "Do I have to manage the app myself?",
     answer:
-      "No. Your team runs everything behind the scenes and keeps your plan up to date. You just follow simple daily guidance and watch your progress.",
+      "No. The app shows the next action, tracks execution, and keeps biology, training, food, supplements, and testing in one place. The goal is fewer decisions, not more admin.",
   },
   {
     question: "What happens after I submit the form?",
     answer:
-      "You'll book a short intro call so we can talk through your goals and see if it is the right fit. If it is, we schedule your labs and onboarding within days.",
+      "We review fit, current bottleneck, schedule constraints, and whether Optimability is the right operating layer. If it is, we map the fastest path into onboarding.",
   },
   {
     question: "Does this replace my doctor or trainer?",
     answer:
-      "No — we work alongside them. We handle the day-to-day optimization, coordinate with your existing doctor or trainer, and flag anything that needs medical attention.",
+      "No. Optimability coordinates the operating layer around your biology and output demands. Physician review and external specialists stay involved when the decision requires them.",
   },
   {
     question: "What makes this different from wearables or trackers?",
     answer:
-      "Trackers give you data; Optimability gives you outcomes. We combine your wearable data with lab work and a human team that actually implements the changes for you.",
+      "Wearables and trackers collect signal. Optimability turns signal into the week: food, supplements, training, testing, and follow-through.",
   },
 ];
 
@@ -79,12 +79,12 @@ export default function Faq() {
                   type="button"
                   aria-expanded={open}
                   onClick={() => setOpenIndex(open ? null : i)}
-                  className="flex h-16 w-full cursor-pointer items-center justify-between gap-4 pl-6 pr-2.5 text-left"
+                  className="group flex h-16 w-full cursor-pointer items-center justify-between gap-4 pl-6 pr-2.5 text-left"
                 >
                   <span className="font-sans text-base tracking-[-0.5px] text-black">
                     {question}
                   </span>
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-white text-black">
+                  <span className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-white text-black transition-colors duration-200 group-hover:bg-brand-ocean group-hover:text-white">
                     <ChevronIcon open={open} />
                   </span>
                 </button>

@@ -30,6 +30,13 @@ const COLUMN_ONE: Testimonial[] = [
     role: "Founder, Maverick Oil",
     avatar: "/founders/avatar-william-phillips.png",
   },
+  {
+    quote:
+      "“It is a hack, having someone come in and do all this for you. I am saving so much time”",
+    name: "Spencer Pawliw",
+    role: "8 Figure Agency Founder",
+    avatar: "/founders/avatar-spencer-pawliw.png",
+  },
 ];
 
 const COLUMN_TWO: Testimonial[] = [
@@ -53,6 +60,13 @@ const COLUMN_TWO: Testimonial[] = [
     name: "Braeden Barkmeier",
     role: "Internet Money Founder",
     avatar: "/founders/avatar-braeden-barkmeier.png",
+  },
+  {
+    quote:
+      "“Good sleep, good food, hydration, working out. It is these little things that are physically alleviating stress.”",
+    name: "Guy Gregory",
+    role: "Founder, GB Defenders",
+    avatar: "/founders/avatar-guy-gregory.png",
   },
 ];
 
@@ -142,7 +156,7 @@ export default function FinalCta() {
         </div>
 
         {/* Testimonial columns scrolling behind a bottom fade */}
-        <div className="absolute inset-y-0 right-0 hidden gap-6 overflow-hidden [mask-image:linear-gradient(180deg,black_78%,transparent_100%)] lg:flex">
+        <div className="absolute inset-y-0 right-0 hidden gap-6 overflow-hidden [mask-image:linear-gradient(180deg,transparent_0%,black_12%,black_78%,transparent_100%)] lg:flex">
           <MarqueeColumn items={COLUMN_ONE} duration="55s" delay="-8.4s" />
           <MarqueeColumn items={COLUMN_TWO} duration="70s" delay="-2.7s" />
         </div>
