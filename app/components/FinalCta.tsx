@@ -63,11 +63,14 @@ function TestimonialCard({ quote, name, role, avatar }: Testimonial) {
         {quote}
       </blockquote>
       <div className="flex items-center gap-4">
+        {/* unoptimized: sources are already small; the optimizer's low-quality
+            small rendition looks soft, the original downscaled by the browser doesn't */}
         <Image
           src={avatar}
           alt={name}
           width={44}
           height={44}
+          unoptimized
           className="size-11 shrink-0 rounded-full object-cover"
         />
         <div>
