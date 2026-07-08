@@ -11,11 +11,11 @@ export default function OptimabilityFounders() {
   return (
     <section
       id="founders"
-      className="w-full px-4 pt-44"
+      className="w-full px-4 pt-20 md:pt-32 lg:pt-44"
       aria-label="Optimability founders"
     >
       <div className="mx-auto w-full max-w-[82.5rem]">
-        <h2 className="text-center font-jakarta text-[3.25rem] font-normal capitalize leading-[3.75rem] tracking-[-2px] text-black">
+        <h2 className="text-center font-jakarta text-[2rem] font-normal capitalize leading-[2.5rem] tracking-[-1px] text-black md:text-[2.5rem] md:leading-[3rem] md:tracking-[-1.5px] lg:text-[3.25rem] lg:leading-[3.75rem] lg:tracking-[-2px]">
           Optimability Founders
         </h2>
 
@@ -43,7 +43,7 @@ export default function OptimabilityFounders() {
           {/* Mission card */}
           <article className="hero-gradient flex min-h-[28rem] flex-col justify-between rounded-lg p-6 sm:col-span-2 lg:col-span-1">
             <p className="font-sans text-base text-white/90">Our mission</p>
-            <p className="font-jakarta text-4xl font-normal leading-[3rem] tracking-[-1px] text-white">
+            <p className="font-jakarta text-3xl font-normal leading-[2.5rem] tracking-[-1px] text-white sm:text-4xl sm:leading-[3rem]">
               On A Mission To
               <br />
               Double The Average

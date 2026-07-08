@@ -24,7 +24,7 @@ export default function Navbar() {
             priority
             unoptimized
           />
-          <span className="font-jakarta text-base font-semibold leading-6 tracking-[0.01em] text-white">
+          <span className="hidden font-jakarta text-base font-semibold leading-6 tracking-[0.01em] text-white min-[420px]:inline">
             Optimability
           </span>
         </a>

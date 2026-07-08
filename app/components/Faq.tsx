@@ -60,11 +60,11 @@ export default function Faq() {
   return (
     <section
       id="faq"
-      className="w-full px-4 py-[6.25rem]"
+      className="w-full px-4 py-16 md:py-20 lg:py-[6.25rem]"
       aria-label="Frequently asked questions"
     >
-      <div className="mx-auto flex w-full max-w-[82.5rem] flex-col gap-12 lg:flex-row lg:justify-between">
-        <h2 className="font-jakarta text-[3.25rem] font-normal capitalize leading-[3.75rem] tracking-[-2px] text-black">
+      <div className="mx-auto flex w-full max-w-[82.5rem] flex-col gap-10 lg:flex-row lg:justify-between lg:gap-12">
+        <h2 className="font-jakarta text-[2rem] font-normal capitalize leading-[2.5rem] tracking-[-1px] text-black md:text-[2.5rem] md:leading-[3rem] md:tracking-[-1.5px] lg:text-[3.25rem] lg:leading-[3.75rem] lg:tracking-[-2px]">
           Frequently Asked
           <br />
           Questions
@@ -79,7 +79,7 @@ export default function Faq() {
                   type="button"
                   aria-expanded={open}
                   onClick={() => setOpenIndex(open ? null : i)}
-                  className="group flex h-16 w-full cursor-pointer items-center justify-between gap-4 pl-6 pr-2.5 text-left"
+                  className="group flex min-h-16 w-full cursor-pointer items-center justify-between gap-4 py-2.5 pl-6 pr-2.5 text-left"
                 >
                   <span className="font-sans text-base tracking-[-0.5px] text-black">
                     {question}

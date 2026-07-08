@@ -135,18 +135,18 @@ export default function HowWeHelpYou() {
   return (
     <section
       id="how-we-help-you"
-      className="w-full px-4 pt-36"
+      className="w-full px-4 pt-20 md:pt-28 lg:pt-36"
       aria-label="How we help you"
     >
       {/* Heading */}
-      <h2 className="text-center font-jakarta text-[3.25rem] font-normal capitalize leading-[3.75rem] text-black">
+      <h2 className="text-center font-jakarta text-[2rem] font-normal capitalize leading-[2.5rem] text-black md:text-[2.5rem] md:leading-[3rem] lg:text-[3.25rem] lg:leading-[3.75rem]">
         How we help you
       </h2>
 
       {/* Subtitle */}
-      <p className="mx-auto mt-4 text-center font-sans text-base leading-[1.375rem] text-black/80">
-        One system running your nutrition, training, recovery, and testing
-        <br />
+      <p className="mx-auto mt-4 max-w-[34rem] text-center font-sans text-base leading-[1.375rem] text-black/80">
+        One system running your nutrition, training, recovery, and testing{" "}
+        <br className="hidden md:block" />
         so you can operate at full
       </p>
 
@@ -168,7 +168,7 @@ export default function HowWeHelpYou() {
               <Icon className="size-4" />
             </div>
 
-            <h3 className="mt-auto pt-14 font-sans text-xl leading-[1.375rem] text-black">
+            <h3 className="mt-auto pt-10 font-sans text-xl leading-[1.375rem] text-black md:pt-14">
               {title}
             </h3>
             <p className="mt-2 max-w-[34.25rem] font-sans text-base leading-[1.375rem] text-black/80">

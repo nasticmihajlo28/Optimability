@@ -5,15 +5,16 @@ export default function RealResults() {
       className="w-full px-4 pt-20"
       aria-label="Real results from real founders"
     >
-      {/* Card: 1320x900, #ebf1f4, radius 8 (exact Figma geometry at lg) */}
-      <div className="relative mx-auto w-full max-w-[82.5rem] rounded-lg bg-surface-muted px-6 py-10 lg:h-[900px] lg:px-0 lg:py-0">
+      {/* Card: 1320x900, #ebf1f4, radius 8 — the exact Figma geometry needs
+          the full 1320px container, so it only applies from xl up */}
+      <div className="relative mx-auto w-full max-w-[82.5rem] rounded-lg bg-surface-muted px-6 py-10 xl:h-[900px] xl:px-0 xl:py-0">
         {/* Heading */}
-        <h2 className="max-w-[423px] font-jakarta text-[3.25rem] font-normal capitalize leading-[3.75rem] tracking-[-2px] text-black lg:absolute lg:left-[112px] lg:top-[375.5px] lg:max-w-none lg:w-[423px] lg:-translate-y-1/2">
+        <h2 className="max-w-[423px] font-jakarta text-[2rem] font-normal capitalize leading-[2.5rem] tracking-[-1px] text-black md:text-[2.5rem] md:leading-[3rem] md:tracking-[-1.5px] xl:absolute xl:left-[112px] xl:top-[375.5px] xl:max-w-none xl:w-[423px] xl:-translate-y-1/2 xl:text-[3.25rem] xl:leading-[3.75rem] xl:tracking-[-2px]">
           Real results from real founders
         </h2>
 
         {/* Description */}
-        <p className="mt-4 max-w-[424px] font-sans text-base leading-[1.375rem] tracking-[-1px] text-black/80 lg:absolute lg:left-[112px] lg:top-[470px] lg:mt-0 lg:max-w-none lg:w-[424px] lg:-translate-y-1/2">
+        <p className="mt-4 max-w-[424px] font-sans text-base leading-[1.375rem] tracking-[-1px] text-black/80 xl:absolute xl:left-[112px] xl:top-[470px] xl:mt-0 xl:max-w-none xl:w-[424px] xl:-translate-y-1/2">
           14-hour days without real food and energy take their toll. Sam Zia,
           serial entrepreneur, shares how Optimability changed that
         </p>
@@ -21,7 +22,7 @@ export default function RealResults() {
         {/* View more — destination will be wired up later */}
         <button
           type="button"
-          className="relative mt-6 block h-12 w-[200px] cursor-pointer overflow-hidden rounded-lg bg-[linear-gradient(124.196deg,#011a29_2.75%,#034d74_46.26%)] transition-colors duration-200 hover:bg-none hover:bg-brand-ocean lg:absolute lg:left-[112px] lg:top-[527px] lg:mt-0"
+          className="relative mt-6 block h-12 w-[200px] cursor-pointer overflow-hidden rounded-lg bg-[linear-gradient(124.196deg,#011a29_2.75%,#034d74_46.26%)] transition-colors duration-200 hover:bg-none hover:bg-brand-ocean xl:absolute xl:left-[112px] xl:top-[527px] xl:mt-0"
         >
           <span className="absolute left-[calc(50%-21px)] top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-sans text-base tracking-[-1px] text-white">
             View more
@@ -44,7 +45,7 @@ export default function RealResults() {
         </button>
 
         {/* Video placeholder (536x740) — the real video drops in here later */}
-        <div className="relative mt-10 aspect-[536/740] w-full max-w-[536px] rounded-lg bg-[#d9d9d9] shadow-[2px_2px_12px_0px_rgba(0,0,0,0.2)] lg:absolute lg:left-[672px] lg:top-[80px] lg:mt-0 lg:aspect-auto lg:h-[740px] lg:w-[536px]">
+        <div className="relative mt-10 aspect-[536/740] w-full max-w-[536px] rounded-lg bg-[#d9d9d9] shadow-[2px_2px_12px_0px_rgba(0,0,0,0.2)] xl:absolute xl:left-[672px] xl:top-[80px] xl:mt-0 xl:aspect-auto xl:h-[740px] xl:w-[536px]">
           {/* Play button overlay */}
           <div className="absolute left-1/2 top-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/40 backdrop-blur-[5px]">
             <svg

@@ -13,7 +13,7 @@ export default function Hero() {
       </div>
 
       {/* Title */}
-      <h1 className="mt-6 max-w-[61.25rem] text-center font-jakarta text-[3.5rem] font-medium leading-[1.15] text-white">
+      <h1 className="mt-6 max-w-[61.25rem] text-center font-jakarta text-[2.25rem] font-medium leading-[1.15] text-white md:text-[3rem] lg:text-[3.5rem]">
         One System Completely Running Your Entire Health And Performance
       </h1>
 
@@ -24,7 +24,7 @@ export default function Hero() {
       </p>
 
       {/* CTA buttons */}
-      <div className="mt-10 flex items-center gap-[1.875rem]">
+      <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:gap-[1.875rem]">
         <CtaButton />
         <a
           href="#how-it-works"
@@ -43,7 +43,7 @@ export default function Hero() {
         width={1320}
         height={720}
         priority
-        className="mt-16 -mb-[21.25rem] h-auto w-full max-w-[82.5rem] rounded-[1.25rem] object-cover"
+        className="mt-10 -mb-24 h-auto w-full max-w-[82.5rem] rounded-xl object-cover sm:-mb-40 md:mt-16 md:-mb-48 md:rounded-[1.25rem] lg:-mb-64 xl:-mb-[21.25rem]"
       />
     </section>
   );

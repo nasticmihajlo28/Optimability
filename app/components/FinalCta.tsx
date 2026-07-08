@@ -137,13 +137,13 @@ export default function FinalCta() {
   return (
     <section
       id="qualify"
-      className="hero-gradient mt-[6.25rem] w-full overflow-hidden px-4"
+      className="hero-gradient mt-16 w-full overflow-hidden px-4 md:mt-20 lg:mt-[6.25rem]"
       aria-label="Ready to let Optimability run your health"
     >
       <div className="relative mx-auto w-full max-w-[82.5rem]">
         {/* Copy + CTA */}
-        <div className="flex min-h-[55rem] max-w-[38rem] flex-col justify-center py-20">
-          <h2 className="font-jakarta text-[3.25rem] font-normal capitalize leading-[3.75rem] tracking-[-2px] text-white">
+        <div className="flex max-w-[38rem] flex-col justify-center py-16 md:py-20 lg:min-h-[55rem]">
+          <h2 className="font-jakarta text-[2rem] font-normal capitalize leading-[2.5rem] tracking-[-1px] text-white md:text-[2.5rem] md:leading-[3rem] md:tracking-[-1.5px] lg:text-[3.25rem] lg:leading-[3.75rem] lg:tracking-[-2px]">
             Ready To Let Optimability Run Your Health
           </h2>
           <p className="mt-4 max-w-[17rem] font-sans text-base leading-[1.375rem] tracking-[-1px] text-white/80">
@@ -155,10 +155,13 @@ export default function FinalCta() {
           </div>
         </div>
 
-        {/* Testimonial columns scrolling behind a bottom fade */}
+        {/* Testimonial columns scrolling behind a bottom fade —
+            one column at lg (two would overlap the copy), both from xl */}
         <div className="absolute inset-y-0 right-0 hidden gap-6 overflow-hidden [mask-image:linear-gradient(180deg,transparent_0%,black_12%,black_78%,transparent_100%)] lg:flex">
           <MarqueeColumn items={COLUMN_ONE} duration="55s" delay="-8.4s" />
-          <MarqueeColumn items={COLUMN_TWO} duration="70s" delay="-2.7s" />
+          <div className="hidden xl:block">
+            <MarqueeColumn items={COLUMN_TWO} duration="70s" delay="-2.7s" />
+          </div>
         </div>
       </div>
     </section>

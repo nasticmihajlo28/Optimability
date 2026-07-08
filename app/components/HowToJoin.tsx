@@ -206,30 +206,30 @@ function FormVisual() {
       <WaveBackdrop idPrefix="step1" />
 
       {/* Translucent form panel */}
-      <div className="absolute left-1/2 top-[60px] h-[357px] w-[286px] -translate-x-1/2 rounded-lg bg-[#f4f4f4]/12" />
+      <div className="absolute left-1/2 top-[60px] h-[357px] w-[286px] max-w-[calc(100%-16px)] -translate-x-1/2 rounded-lg bg-[#f4f4f4]/12" />
 
-      <p className="absolute left-[calc(50%-127px)] top-[82px] -translate-y-1/2 whitespace-nowrap font-sans text-base leading-[22px] tracking-[-1px] text-white">
+      <p className="absolute left-1/2 top-[82px] w-[254px] max-w-[calc(100%-48px)] -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-sans text-base leading-[22px] tracking-[-1px] text-white">
         Fill contact form
       </p>
 
       {/* Input placeholders */}
-      <div className="absolute left-[calc(50%-127px)] top-[108px] h-8 w-[254px] rounded bg-linear-to-r from-[#c2c2c2] to-[#e2e2e2] opacity-20" />
-      <div className="absolute left-[calc(50%-127px)] top-[156px] h-8 w-[254px] rounded bg-linear-to-r from-[#ebebeb] to-[#c2c2c2] opacity-20" />
+      <div className="absolute left-1/2 top-[108px] h-8 w-[254px] max-w-[calc(100%-48px)] -translate-x-1/2 rounded bg-linear-to-r from-[#c2c2c2] to-[#e2e2e2] opacity-20" />
+      <div className="absolute left-1/2 top-[156px] h-8 w-[254px] max-w-[calc(100%-48px)] -translate-x-1/2 rounded bg-linear-to-r from-[#ebebeb] to-[#c2c2c2] opacity-20" />
       <div
-        className="absolute left-[calc(50%-127px)] top-[252px] h-8 w-[254px] rounded opacity-20"
+        className="absolute left-1/2 top-[252px] h-8 w-[254px] max-w-[calc(100%-48px)] -translate-x-1/2 rounded opacity-20"
         style={{ backgroundImage: "linear-gradient(90deg, #ebebeb 0%, #c2c2c2 230.51%)" }}
       />
 
       {/* Email chip */}
-      <div className="absolute left-[calc(50%+0.38px)] top-[calc(50%+40.91px)] h-[47.71px] w-[319.288px] -translate-x-1/2 -translate-y-1/2 rotate-2 rounded-[4.893px] bg-white shadow-[1.223px_3.67px_7.34px_0px_rgba(0,0,0,0.28)]">
-        <p className="absolute left-[calc(50%-144.96px)] top-[calc(50%-0.73px)] -translate-y-1/2 whitespace-nowrap font-sans text-[17.127px] leading-[34.705px] tracking-[-1.5775px] text-black">
+      <div className="absolute left-[calc(50%+0.38px)] top-[calc(50%+40.91px)] flex h-[47.71px] w-[319.288px] max-w-[calc(100%-8px)] -translate-x-1/2 -translate-y-1/2 rotate-2 items-center justify-between gap-2 rounded-[4.893px] bg-white px-[14.68px] shadow-[1.223px_3.67px_7.34px_0px_rgba(0,0,0,0.28)]">
+        <p className="truncate font-sans text-[17.127px] leading-[34.705px] tracking-[-1.5775px] text-black">
           founder@company.com
         </p>
-        <CheckBadgeIcon className="absolute left-[286.26px] top-[14.68px] size-[18.35px]" />
+        <CheckBadgeIcon className="size-[18.35px] shrink-0" />
       </div>
 
       {/* Submit button */}
-      <div className="absolute left-1/2 top-[306px] flex h-8 w-[254px] -translate-x-1/2 items-center justify-center rounded-[20px] bg-linear-to-b from-brand-deep to-brand-ocean">
+      <div className="absolute left-1/2 top-[306px] flex h-8 w-[254px] max-w-[calc(100%-48px)] -translate-x-1/2 items-center justify-center rounded-[20px] bg-linear-to-b from-brand-deep to-brand-ocean">
         <span className="font-sans text-sm leading-7 tracking-[-1px] text-white">Submit</span>
       </div>
 
@@ -431,11 +431,11 @@ export default function HowToJoin() {
   return (
     <section
       id="how-it-works"
-      className="w-full px-4 pt-36"
+      className="w-full px-4 pt-20 md:pt-28 lg:pt-36"
       aria-label="How to join Optimability"
     >
       {/* Heading */}
-      <h2 className="text-center font-jakarta text-[3.25rem] font-normal capitalize leading-[3.75rem] tracking-[-2px] text-black">
+      <h2 className="text-center font-jakarta text-[2rem] font-normal capitalize leading-[2.5rem] tracking-[-1px] text-black md:text-[2.5rem] md:leading-[3rem] md:tracking-[-1.5px] lg:text-[3.25rem] lg:leading-[3.75rem] lg:tracking-[-2px]">
         How to join Optimability
       </h2>
 

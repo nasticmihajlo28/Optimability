@@ -117,14 +117,14 @@ function MarqueeRow({
 export default function HelpedFounders() {
   return (
     <section
-      className="w-full pt-36"
+      className="w-full pt-20 md:pt-28 lg:pt-36"
       aria-label="We have helped 100+ founders in 2026"
     >
-      <h2 className="mx-auto max-w-[40.5rem] px-4 text-center font-jakarta text-[3.25rem] font-normal capitalize leading-[3.75rem] tracking-[-2px] text-black">
+      <h2 className="mx-auto max-w-[40.5rem] px-4 text-center font-jakarta text-[2rem] font-normal capitalize leading-[2.5rem] tracking-[-1px] text-black md:text-[2.5rem] md:leading-[3rem] md:tracking-[-1.5px] lg:text-[3.25rem] lg:leading-[3.75rem] lg:tracking-[-2px]">
         We have helped 100+ founders in 2026
       </h2>
 
-      <p className="mx-auto mt-9 max-w-[24.625rem] px-4 text-center font-sans text-base leading-[1.375rem] tracking-[-1px] text-black/80">
+      <p className="mx-auto mt-5 max-w-[24.625rem] px-4 text-center font-sans text-base leading-[1.375rem] tracking-[-1px] text-black/80 md:mt-9">
         Founders who stopped managing their health and started operating at
         their best. Here is what they have to say
       </p>

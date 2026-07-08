@@ -27,7 +27,7 @@ function PlanVisual() {
       }}
     >
       {/* Phone frame (bottom clipped by the card) */}
-      <div className="absolute left-1/2 top-[43px] h-[360px] w-[308px] -translate-x-1/2 rounded-t-[40px] border-4 border-b-0 border-[#b8c1c8] bg-[#f7f7f7]">
+      <div className="absolute left-1/2 top-[43px] h-[360px] w-[308px] max-w-[calc(100%-24px)] -translate-x-1/2 rounded-t-[40px] border-4 border-b-0 border-[#b8c1c8] bg-[#f7f7f7]">
         {/* Notch */}
         <div className="absolute left-1/2 top-3.5 h-3.5 w-[88px] -translate-x-1/2 rounded-full bg-[#c6c6c6]" />
 
@@ -94,100 +94,155 @@ function CursorIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-/** Ghost app screens fading in the background */
-function GhostScreen({ className }: { className: string }) {
+/** Blurred gradient waves painting the background (exported from Figma) */
+const WAVES = [
+  { src: "/built-to-run/wave-1.svg", left: "-33.5%", top: -185, width: "163%", height: 438 },
+  { src: "/built-to-run/wave-2.svg", left: "-33.5%", top: -104, width: "163%", height: 437 },
+  { src: "/built-to-run/wave-3.svg", left: "-33.4%", top: 39, width: "162.8%", height: 424 },
+  { src: "/built-to-run/wave-4.svg", left: "-33.4%", top: -24, width: "162.7%", height: 422 },
+  { src: "/built-to-run/wave-5.svg", left: "-32.3%", top: 111, width: "162.8%", height: 425 },
+];
+
+/** Skeleton bar heights of the mini app cards, in % of card height */
+const MINI_BARS = [14, 19.5, 25.5, 21, 39, 25, 33.5];
+
+/** Faded miniature of the biomarkers screen, stacked behind the main card */
+function MiniAppCard({
+  className,
+  contentOpacity,
+}: {
+  className: string;
+  contentOpacity: number;
+}) {
   return (
-    <div aria-hidden className={`absolute rounded-lg bg-white/35 ${className}`}>
-      <div className="absolute inset-x-3 top-3 h-8 rounded bg-white/50" />
-      <div className="absolute inset-x-3 top-[52px] h-2 rounded-full bg-white/45" />
-      <div className="absolute left-3 right-8 top-[68px] h-2 rounded-full bg-white/45" />
-      <div className="absolute inset-x-3 bottom-4 h-7 rounded bg-white/50" />
+    <div
+      className={`absolute top-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-lg ${className}`}
+    >
+      <div className="absolute inset-0" style={{ opacity: contentOpacity }}>
+        {/* Header skeleton */}
+        <div className="absolute left-[3.75%] top-[6%] h-[18%] w-[11.25%] rounded-[3px] bg-linear-to-r from-[#c5c5c5] to-[#eeeeee]" />
+        <div className="absolute left-[18.1%] top-[8.5%] h-[5%] w-[30.3%] rounded-full bg-linear-to-r from-[#e0e0e0] to-[#a6a6a6]" />
+        <div className="absolute left-[18.1%] top-[18%] h-[3.5%] w-[47.8%] rounded-full bg-linear-to-r from-[#d1d1d1] to-[#ededed]" />
+        {/* Chart bars */}
+        {MINI_BARS.map((height, i) => (
+          <div
+            key={i}
+            className="absolute bottom-[13%] w-[10%] rounded-[3px] bg-linear-to-b from-[#e0e0e0] to-[#f9f9f9]"
+            style={{ left: `${3.75 + i * 13.75}%`, height: `${height}%` }}
+          />
+        ))}
+        {/* Day-label pills */}
+        {MINI_BARS.map((_, i) => (
+          <div
+            key={i}
+            className="absolute top-[90%] h-[4%] w-[6.9%] rounded-full bg-linear-to-r from-[#d1d1d1] to-[#ededed]"
+            style={{ left: `${5 + i * 13.75}%` }}
+          />
+        ))}
+      </div>
     </div>
   );
 }
 
 const CHART_BARS = [
-  { day: "Mon", height: 42 },
-  { day: "Tue", height: 46 },
-  { day: "Wed", height: 50 },
-  { day: "Thu", height: 54 },
-  { day: "Fri", height: 108, highlight: true },
-  { day: "Sat", height: 62 },
-  { day: "Sun", height: 92 },
+  { day: "Mon", height: 28 },
+  { day: "Tue", height: 39 },
+  { day: "Wed", height: 51 },
+  { day: "Thu", height: 42 },
+  { day: "Fri", height: 78, highlight: true },
+  { day: "Sat", height: 50 },
+  { day: "Sun", height: 67 },
 ];
 
 function BiomarkersVisual() {
   return (
-    <div
-      aria-hidden
-      className="absolute inset-0"
-      style={{
-        backgroundImage:
-          "linear-gradient(160deg, #CEE7E1 0%, #A6D0C8 45%, #8AC7B4 100%)",
-      }}
-    >
-      {/* Ghost screens behind the popover */}
-      <GhostScreen className="left-[42px] top-[68px] h-[186px] w-[118px] opacity-60" />
-      <GhostScreen className="left-[142px] top-[44px] h-[236px] w-[152px]" />
-      <GhostScreen className="right-[142px] top-[44px] h-[236px] w-[152px]" />
-      <GhostScreen className="right-[42px] top-[68px] h-[186px] w-[118px] opacity-60" />
+    <div aria-hidden className="absolute inset-0 bg-white">
+      {/* Wavy gradient background */}
+      {WAVES.map(({ src, left, top, width, height }) => (
+        <div
+          key={src}
+          className="absolute"
+          style={{
+            left,
+            top,
+            width,
+            height,
+            backgroundImage: `url(${src})`,
+            backgroundSize: "100% 100%",
+          }}
+        />
+      ))}
 
-      {/* Biomarkers popover */}
-      <div className="absolute left-1/2 top-[77px] w-[92%] max-w-[320px] -translate-x-1/2 rounded-xl bg-white p-4 shadow-[2px_2px_16px_0px_rgba(0,0,0,0.16)]">
+      {/* Mini app screens stacked behind the main card */}
+      <MiniAppCard
+        className="left-[calc(50%-213px)] h-[104px] w-[166px] border-[1.5px] border-[#558a82]/20 bg-[#aacec8]"
+        contentOpacity={0.2}
+      />
+      <MiniAppCard
+        className="left-[calc(50%+213px)] h-[104px] w-[166px] border-[1.5px] border-[#558a82]/20 bg-[#aacec8]"
+        contentOpacity={0.2}
+      />
+      <MiniAppCard
+        className="left-[calc(50%-106.5px)] h-[152px] w-[243px] border-2 border-[#579086]/40 bg-[#d7e5e2]"
+        contentOpacity={0.6}
+      />
+      <MiniAppCard
+        className="left-[calc(50%+106.5px)] h-[152px] w-[243px] border-2 border-[#579086]/40 bg-[#d7e5e2]"
+        contentOpacity={0.6}
+      />
+
+      {/* Main biomarkers card */}
+      <div className="absolute left-1/2 top-1/2 h-[200px] w-[320px] max-w-[calc(100%-16px)] -translate-x-1/2 -translate-y-1/2 rounded-lg border-4 border-[#558a82] bg-[#f4f4f4] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.2)]">
         {/* Header */}
-        <div className="flex items-center gap-2.5">
-          <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-linear-to-b from-[#0d7a52] to-[#4cbe8f]">
+        <div className="absolute left-3 top-3 flex items-center gap-2.5">
+          <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-linear-to-b from-[#076c4f] to-[#10bc8b]">
             <DropletIcon className="size-4" />
           </div>
           <div>
-            <p className="font-sans text-base leading-5 tracking-[-0.5px] text-black">
+            <p className="font-sans text-base leading-5 tracking-[-1px] text-black">
               Biomarkers
             </p>
-            <p className="font-sans text-xs leading-4 tracking-[-0.3px] text-black/60">
+            <p className="font-sans text-xs leading-4 tracking-[-1px] text-black/60">
               Blood, DEXA, and gut panels over time
             </p>
           </div>
         </div>
 
         {/* Chart */}
-        <div className="relative mt-4">
-          <div className="flex items-end justify-between gap-2">
-            {CHART_BARS.map(({ day, height, highlight }) => (
-              <div key={day} className="flex w-8 flex-col items-center gap-1">
-                <div
-                  className={`w-full rounded-md ${
-                    highlight
-                      ? "bg-linear-to-b from-[#0b5e40] to-[#2fa97a]"
-                      : "bg-linear-to-b from-[#dff2ea] to-[#9fd6bf]"
-                  }`}
-                  style={{ height }}
-                />
-                <span className="font-sans text-[10px] leading-3 text-black/50">
-                  {day}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* Friday tooltip */}
-          <div className="absolute bottom-10 left-[52px] w-[132px] rounded-lg bg-white p-2.5 shadow-[2px_2px_12px_0px_rgba(0,0,0,0.2)]">
-            <p className="font-sans text-xs font-medium leading-4 text-black">
-              Friday
-            </p>
-            <p className="mt-1 font-sans text-[10px] leading-[14px] text-black/60">
-              Score: <span className="text-[#12a066]">83</span>
-            </p>
-            <p className="font-sans text-[10px] leading-[14px] text-black/60">
-              CRP: <span className="text-[#12a066]">1.0mg/L</span>
-            </p>
-            <p className="font-sans text-[10px] leading-[14px] text-black/60">
-              Glucose: <span className="text-[#12a066]">95mg/dL</span>
-            </p>
-            {/* Pointer toward the Friday bar */}
-            <div className="absolute -right-1 top-1/2 size-2.5 -translate-y-1/2 rotate-45 bg-white" />
-          </div>
-          <CursorIcon className="absolute bottom-[104px] left-[196px] size-4" />
+        <div className="absolute bottom-0 left-3 right-1 flex items-end justify-between">
+          {CHART_BARS.map(({ day, height, highlight }) => (
+            <div key={day} className="flex w-8 flex-col items-center gap-0.5">
+              <div
+                className={`w-full rounded-[4px] bg-linear-to-b from-[#076c4f] to-[#10bc8b] ${
+                  highlight ? "" : "opacity-40"
+                }`}
+                style={{ height }}
+              />
+              <span className="font-sans text-[11px] leading-4 tracking-[-1px] text-black/60">
+                {day}
+              </span>
+            </div>
+          ))}
         </div>
+
+        {/* Friday tooltip */}
+        <div className="absolute left-[58px] top-[72px] h-[74px] w-[122px] rounded-[4px] bg-white p-2 shadow-[2px_2px_12px_0px_rgba(0,0,0,0.2)]">
+          <p className="font-sans text-xs leading-4 tracking-[-0.24px] text-black">
+            Friday
+          </p>
+          <p className="font-sans text-[10px] leading-[14px] tracking-[-0.2px] text-black/60">
+            Score: <span className="text-[#19b488]">83</span>
+          </p>
+          <p className="font-sans text-[10px] leading-[14px] tracking-[-0.2px] text-black/60">
+            CRP: <span className="text-[#19b488]">1.0mg/L</span>
+          </p>
+          <p className="font-sans text-[10px] leading-[14px] tracking-[-0.2px] text-black/60">
+            Glucose: <span className="text-[#19b488]">89mg/dL</span>
+          </p>
+          {/* Pointer toward the Friday bar */}
+          <div className="absolute -right-[5px] top-1/2 size-2.5 -translate-y-1/2 rotate-45 bg-white" />
+        </div>
+        <CursorIcon className="absolute left-[66.9%] top-[109px] size-4" />
       </div>
     </div>
   );
@@ -253,7 +308,7 @@ function ArchitectVisual() {
       {/* Chat panel */}
       <div className="absolute left-1/2 top-[31px] h-[325px] w-[92%] max-w-[589px] -translate-x-1/2 rounded-xl bg-[#f4f4f4] shadow-[2px_2px_16px_0px_rgba(0,0,0,0.14)]">
         {/* User bubble */}
-        <div className="absolute right-5 top-5 rounded-lg bg-white px-4 py-2.5 shadow-[0px_1px_6px_0px_rgba(0,0,0,0.1)]">
+        <div className="absolute right-5 top-5 max-w-[calc(100%-40px)] rounded-lg bg-white px-4 py-2.5 shadow-[0px_1px_6px_0px_rgba(0,0,0,0.1)]">
           <p className="font-sans text-sm leading-5 tracking-[-0.5px] text-black">
             Why did my score drop this week?
           </p>
@@ -287,8 +342,8 @@ function ArchitectVisual() {
         </div>
 
         {/* Input bar */}
-        <div className="absolute inset-x-5 bottom-4 flex h-11 items-center justify-between rounded-lg border border-black/10 bg-white pl-4 pr-1.5">
-          <span className="font-sans text-xs leading-4 tracking-[-0.3px] text-black/40">
+        <div className="absolute inset-x-5 bottom-4 flex h-11 items-center justify-between gap-2 rounded-lg border border-black/10 bg-white pl-4 pr-1.5">
+          <span className="min-w-0 truncate font-sans text-xs leading-4 tracking-[-0.3px] text-black/40">
             Ask a question or log what happened...
           </span>
           <span className="flex size-8 items-center justify-center rounded-md bg-linear-to-b from-brand-navy to-brand-blue">
@@ -422,7 +477,7 @@ export default function BuiltToRun() {
     >
       <div className="mx-auto w-full max-w-[82.5rem]">
         {/* Heading */}
-        <h2 className="font-jakarta text-[3.25rem] font-normal capitalize leading-[3.75rem] tracking-[-2px] text-black">
+        <h2 className="font-jakarta text-[2rem] font-normal capitalize leading-[2.5rem] tracking-[-1px] text-black md:text-[2.5rem] md:leading-[3rem] md:tracking-[-1.5px] lg:text-[3.25rem] lg:leading-[3.75rem] lg:tracking-[-2px]">
           Built to run your health
         </h2>
 

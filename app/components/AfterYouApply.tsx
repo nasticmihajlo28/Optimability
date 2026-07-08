@@ -68,14 +68,14 @@ const STEPS = [
 export default function AfterYouApply() {
   return (
     <section
-      className="w-full px-4 pt-36"
+      className="w-full px-4 pt-20 md:pt-28 lg:pt-36"
       aria-label="What happens after you apply"
     >
-      <h2 className="text-center font-jakarta text-[3.25rem] font-normal capitalize leading-[3.75rem] tracking-[-2px] text-black">
+      <h2 className="text-center font-jakarta text-[2rem] font-normal capitalize leading-[2.5rem] tracking-[-1px] text-black md:text-[2.5rem] md:leading-[3rem] md:tracking-[-1.5px] lg:text-[3.25rem] lg:leading-[3.75rem] lg:tracking-[-2px]">
         What happens after you apply
       </h2>
 
-      <div className="relative mx-auto mt-16 w-full max-w-[60rem]">
+      <div className="relative mx-auto mt-10 w-full max-w-[60rem] md:mt-16">
         {/* Connector line between the icon tiles */}
         <div
           aria-hidden

@@ -43,11 +43,11 @@ export default function TrustedBy() {
         {/* Edge fades */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 left-0 w-30 bg-linear-to-r from-white to-transparent"
+          className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-linear-to-r from-white to-transparent md:w-30"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 right-0 w-30 bg-linear-to-l from-white to-transparent"
+          className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-linear-to-l from-white to-transparent md:w-30"
         />
       </div>
     </section>

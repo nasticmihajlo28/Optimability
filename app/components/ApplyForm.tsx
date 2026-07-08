@@ -122,15 +122,15 @@ export default function ApplyForm() {
   return (
     <section
       id="apply"
-      className="hero-gradient mt-36 w-full overflow-hidden px-4 py-32"
+      className="hero-gradient mt-20 w-full overflow-hidden px-4 py-20 md:mt-28 md:py-32 lg:mt-36"
       aria-label="Apply to Optimability"
     >
-      <h2 className="text-center font-jakarta text-[2.75rem] font-normal capitalize leading-[3.25rem] tracking-[-2px] text-white">
+      <h2 className="text-center font-jakarta text-[2rem] font-normal capitalize leading-[2.5rem] tracking-[-1px] text-white md:text-[2.75rem] md:leading-[3.25rem] md:tracking-[-2px]">
         Apply to Optimability
       </h2>
 
-      {/* Card stack */}
-      <div className="relative mx-auto mt-19 h-[25.5625rem] w-full max-w-[26.5rem]">
+      {/* Card stack — min-h so long questions can grow the card on narrow screens */}
+      <div className="relative mx-auto mt-12 flex min-h-[25.5625rem] w-full max-w-[26.5rem] flex-col md:mt-19">
         <div
           aria-hidden
           className="absolute inset-0 -rotate-3 rounded-lg bg-[#96a5ae]"
@@ -140,7 +140,7 @@ export default function ApplyForm() {
           className="absolute inset-0 rotate-3 rounded-lg bg-[#bcc4c8]"
         />
 
-        <div className="relative flex h-full flex-col rounded-lg bg-white p-6 shadow-[2px_2px_12px_0px_rgba(0,0,0,0.18)]">
+        <div className="relative flex flex-1 flex-col rounded-lg bg-white p-6 shadow-[2px_2px_12px_0px_rgba(0,0,0,0.18)]">
           {submitted ? (
             <div className="flex flex-1 flex-col items-center justify-center text-center">
               <div className="flex size-16 items-center justify-center rounded-full bg-linear-to-br from-brand-deep to-brand-ocean">

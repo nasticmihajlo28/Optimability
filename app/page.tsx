@@ -18,8 +18,9 @@ export default function Home() {
         <Navbar />
         <Hero />
       </div>
-      {/* Reserves space for the hero image that overflows the gradient */}
-      <div aria-hidden className="h-[21.25rem]" />
+      {/* Reserves space for the hero image that overflows the gradient —
+          heights must mirror the image's responsive negative margins in Hero */}
+      <div aria-hidden className="h-24 sm:h-40 md:h-48 lg:h-64 xl:h-[21.25rem]" />
       <TrustedBy />
       <HowWeHelpYou />
       <HowToJoin />

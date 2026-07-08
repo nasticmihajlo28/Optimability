@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image, { type StaticImageData } from "next/image";
 import spencerPhoto from "../images/image 5.png";
 import samPhoto from "../images/image 6.png";
@@ -96,18 +96,33 @@ function ArrowIcon({ direction }: { direction: "left" | "right" }) {
 
 export default function WhatFoundersAreSaying() {
   const [index, setIndex] = useState(0);
-  const maxIndex = ITEMS.length - 2;
+  // Two cards fit only once the 82.5rem container holds two 40.5rem cards
+  // (viewport ≥ 1352px) — below that one card per step, max index follows suit
+  const [perView, setPerView] = useState(2);
+  const maxIndex = ITEMS.length - perView;
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1352px)");
+    const update = () => {
+      const visible = mq.matches ? 2 : 1;
+      setPerView(visible);
+      setIndex((i) => Math.min(i, ITEMS.length - visible));
+    };
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   return (
     <section
       id="founders-saying"
-      className="w-full overflow-hidden px-4 pt-40"
+      className="w-full overflow-hidden px-4 pt-20 md:pt-28 lg:pt-40"
       aria-label="What founders are saying"
     >
       <div className="mx-auto w-full max-w-[82.5rem]">
         {/* Heading + carousel arrows */}
-        <div className="flex items-center justify-between">
-          <h2 className="font-jakarta text-[3.25rem] font-normal capitalize leading-[3.75rem] tracking-[-2px] text-black">
+        <div className="flex items-center justify-between gap-4">
+          <h2 className="font-jakarta text-[2rem] font-normal capitalize leading-[2.5rem] tracking-[-1px] text-black md:text-[2.5rem] md:leading-[3rem] md:tracking-[-1.5px] lg:text-[3.25rem] lg:leading-[3.75rem] lg:tracking-[-2px]">
             What Founders
             <br />
             Are Saying
@@ -135,10 +150,12 @@ export default function WhatFoundersAreSaying() {
           </div>
         </div>
 
-        {/* Cards track — third card intentionally overflows to the right */}
+        {/* Cards track — third card intentionally overflows to the right.
+            Below lg cards are full-width so the step is 100% + gap; from lg
+            cards are fixed 40.5rem, so the step is a fixed 42rem (card + gap) */}
         <div
-          className="mt-12 flex gap-6 transition-transform duration-500 ease-out"
-          style={{ transform: `translateX(calc(${index} * -1 * (100% + 1.5rem) / 2))` }}
+          className="mt-12 flex gap-6 transition-transform duration-500 ease-out [--step:calc(100%+1.5rem)] lg:[--step:42rem]"
+          style={{ transform: `translateX(calc(${index} * -1 * var(--step)))` }}
         >
           {ITEMS.map(({ name, role, quote, photo }, i) => (
             <article
