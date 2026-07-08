@@ -1,7 +1,7 @@
 export default function CtaButton() {
   return (
     <a
-      href="#qualify"
+      href="/apply"
       className="group flex h-12 w-fit items-center gap-3.5 rounded-lg bg-white pl-4 pr-1.5 transition-colors duration-200 hover:bg-brand-ocean"
     >
       <span className="font-sans text-base whitespace-nowrap text-brand-navy transition-colors duration-200 group-hover:text-white">

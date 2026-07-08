@@ -94,6 +94,39 @@ function ArrowIcon({ direction }: { direction: "left" | "right" }) {
   );
 }
 
+function ArrowButtons({
+  index,
+  maxIndex,
+  setIndex,
+}: {
+  index: number;
+  maxIndex: number;
+  setIndex: React.Dispatch<React.SetStateAction<number>>;
+}) {
+  return (
+    <div className="flex items-center gap-4">
+      <button
+        type="button"
+        aria-label="Previous testimonials"
+        onClick={() => setIndex((i) => Math.max(0, i - 1))}
+        disabled={index === 0}
+        className="flex size-12 cursor-pointer items-center justify-center rounded-lg bg-surface-muted text-black transition-[opacity,background-color,color] duration-200 enabled:hover:bg-brand-ocean enabled:hover:text-white disabled:cursor-default disabled:opacity-45"
+      >
+        <ArrowIcon direction="left" />
+      </button>
+      <button
+        type="button"
+        aria-label="Next testimonials"
+        onClick={() => setIndex((i) => Math.min(maxIndex, i + 1))}
+        disabled={index === maxIndex}
+        className="flex size-12 cursor-pointer items-center justify-center rounded-lg bg-surface-muted text-black transition-[opacity,background-color,color] duration-200 enabled:hover:bg-brand-ocean enabled:hover:text-white disabled:cursor-default disabled:opacity-45"
+      >
+        <ArrowIcon direction="right" />
+      </button>
+    </div>
+  );
+}
+
 export default function WhatFoundersAreSaying() {
   const [index, setIndex] = useState(0);
   // Two cards fit only once the 82.5rem container holds two 40.5rem cards
@@ -120,7 +153,7 @@ export default function WhatFoundersAreSaying() {
       aria-label="What founders are saying"
     >
       <div className="mx-auto w-full max-w-[82.5rem]">
-        {/* Heading + carousel arrows */}
+        {/* Heading — arrows sit beside it on desktop, below the cards on mobile */}
         <div className="flex items-center justify-between gap-4">
           <h2 className="font-jakarta text-[2rem] font-normal capitalize leading-[2.5rem] tracking-[-1px] text-black md:text-[2.5rem] md:leading-[3rem] md:tracking-[-1.5px] lg:text-[3.25rem] lg:leading-[3.75rem] lg:tracking-[-2px]">
             What Founders
@@ -128,25 +161,8 @@ export default function WhatFoundersAreSaying() {
             Are Saying
           </h2>
 
-          <div className="flex items-center gap-4">
-            <button
-              type="button"
-              aria-label="Previous testimonials"
-              onClick={() => setIndex((i) => Math.max(0, i - 1))}
-              disabled={index === 0}
-              className="flex size-12 cursor-pointer items-center justify-center rounded-lg bg-surface-muted text-black transition-[opacity,background-color,color] duration-200 enabled:hover:bg-brand-ocean enabled:hover:text-white disabled:cursor-default disabled:opacity-45"
-            >
-              <ArrowIcon direction="left" />
-            </button>
-            <button
-              type="button"
-              aria-label="Next testimonials"
-              onClick={() => setIndex((i) => Math.min(maxIndex, i + 1))}
-              disabled={index === maxIndex}
-              className="flex size-12 cursor-pointer items-center justify-center rounded-lg bg-surface-muted text-black transition-[opacity,background-color,color] duration-200 enabled:hover:bg-brand-ocean enabled:hover:text-white disabled:cursor-default disabled:opacity-45"
-            >
-              <ArrowIcon direction="right" />
-            </button>
+          <div className="hidden lg:block">
+            <ArrowButtons index={index} maxIndex={maxIndex} setIndex={setIndex} />
           </div>
         </div>
 
@@ -174,7 +190,7 @@ export default function WhatFoundersAreSaying() {
               </div>
 
               {/* Quote + author */}
-              <div className="flex min-w-0 flex-1 flex-col pt-2 sm:pt-8">
+              <div className="flex min-w-0 flex-1 flex-col pt-2 sm:pt-8 lg:pt-0">
                 <blockquote className="font-jakarta text-2xl font-normal leading-9 tracking-[-1px] text-black">
                   {quote}
                 </blockquote>
@@ -189,6 +205,11 @@ export default function WhatFoundersAreSaying() {
               </div>
             </article>
           ))}
+        </div>
+
+        {/* Arrows below the cards — mobile & tablet */}
+        <div className="mt-8 flex justify-center lg:hidden">
+          <ArrowButtons index={index} maxIndex={maxIndex} setIndex={setIndex} />
         </div>
       </div>
     </section>

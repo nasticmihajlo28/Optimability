@@ -142,7 +142,7 @@ export default function FinalCta() {
     >
       <div className="relative mx-auto w-full max-w-[82.5rem]">
         {/* Copy + CTA */}
-        <div className="flex max-w-[38rem] flex-col justify-center py-16 md:py-20 lg:min-h-[55rem]">
+        <div className="flex max-w-[38rem] flex-col justify-center pt-16 md:pt-20 lg:min-h-[55rem] lg:py-20">
           <h2 className="font-jakarta text-[2rem] font-normal capitalize leading-[2.5rem] tracking-[-1px] text-white md:text-[2.5rem] md:leading-[3rem] md:tracking-[-1.5px] lg:text-[3.25rem] lg:leading-[3.75rem] lg:tracking-[-2px]">
             Ready To Let Optimability Run Your Health
           </h2>
@@ -155,14 +155,16 @@ export default function FinalCta() {
           </div>
         </div>
 
-        {/* Testimonial columns scrolling behind a bottom fade —
-            one column at lg (two would overlap the copy), both from xl */}
-        <div className="absolute inset-y-0 right-0 hidden gap-6 overflow-hidden [mask-image:linear-gradient(180deg,transparent_0%,black_12%,black_78%,transparent_100%)] lg:flex">
+        {/* Testimonial columns — in flow below the copy on mobile/tablet,
+            absolutely positioned to the right of it from lg up */}
+        <div className="mt-12 flex h-[30rem] justify-center gap-6 overflow-hidden [mask-image:linear-gradient(180deg,transparent_0%,black_12%,black_78%,transparent_100%)] lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-auto lg:justify-start">
           <MarqueeColumn items={COLUMN_ONE} duration="55s" delay="-8.4s" />
-          <div className="hidden xl:block">
+          {/* second column needs md width in flow, xl width next to the copy */}
+          <div className="hidden md:block lg:hidden xl:block">
             <MarqueeColumn items={COLUMN_TWO} duration="70s" delay="-2.7s" />
           </div>
         </div>
+        <div aria-hidden className="h-16 md:h-20 lg:hidden" />
       </div>
     </section>
   );

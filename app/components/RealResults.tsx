@@ -19,30 +19,6 @@ export default function RealResults() {
           serial entrepreneur, shares how Optimability changed that
         </p>
 
-        {/* View more — destination will be wired up later */}
-        <button
-          type="button"
-          className="relative mt-6 block h-12 w-[200px] cursor-pointer overflow-hidden rounded-lg bg-[linear-gradient(124.196deg,#011a29_2.75%,#034d74_46.26%)] transition-colors duration-200 hover:bg-none hover:bg-brand-ocean xl:absolute xl:left-[112px] xl:top-[527px] xl:mt-0"
-        >
-          <span className="absolute left-[calc(50%-21px)] top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-sans text-base tracking-[-1px] text-white">
-            View more
-          </span>
-          <span className="absolute right-1.5 top-1.5 flex size-9 items-center justify-center rounded-lg bg-white">
-            <svg
-              className="size-5 rotate-90"
-              viewBox="0 0 20 20"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M10 16.6663V3.33301M5 8.33301L10 3.33301L15 8.33301"
-                stroke="black"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
-        </button>
 
         {/* Video placeholder (536x740) — the real video drops in here later */}
         <div className="relative mt-10 aspect-[536/740] w-full max-w-[536px] rounded-lg bg-[#d9d9d9] shadow-[2px_2px_12px_0px_rgba(0,0,0,0.2)] xl:absolute xl:left-[672px] xl:top-[80px] xl:mt-0 xl:aspect-auto xl:h-[740px] xl:w-[536px]">
