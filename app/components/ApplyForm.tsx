@@ -63,7 +63,7 @@ const PHONE_COUNTRIES = [
 
 function ArrowRightIcon() {
   return (
-    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="size-4">
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="size-5">
       <path
         d="M2.667 8h10.666M8.667 4l4 4-4 4"
         stroke="#011a29"
@@ -76,7 +76,7 @@ function ArrowRightIcon() {
 
 function CheckIcon() {
   return (
-    <svg viewBox="0 0 28 28" fill="none" aria-hidden="true" className="size-7">
+    <svg viewBox="0 0 28 28" fill="none" aria-hidden="true" className="size-9">
       <path
         d="m6 14.5 5.5 5.5L22 9"
         stroke="#ffffff"
@@ -130,7 +130,7 @@ export default function ApplyForm() {
       </h2>
 
       {/* Card stack — min-h so long questions can grow the card on narrow screens */}
-      <div className="relative mx-auto mt-12 flex min-h-[25.5625rem] w-full max-w-[26.5rem] flex-col md:mt-19">
+      <div className="relative mx-auto mt-12 flex min-h-[31.5rem] w-full max-w-[28rem] flex-col md:mt-19 md:max-w-[33rem]">
         <div
           aria-hidden
           className="absolute inset-0 -rotate-3 rounded-lg bg-[#96a5ae]"
@@ -140,16 +140,16 @@ export default function ApplyForm() {
           className="absolute inset-0 rotate-3 rounded-lg bg-[#bcc4c8]"
         />
 
-        <div className="relative flex flex-1 flex-col rounded-lg bg-white p-6 shadow-[2px_2px_12px_0px_rgba(0,0,0,0.18)]">
+        <div className="relative flex flex-1 flex-col rounded-lg bg-white p-7 shadow-[2px_2px_12px_0px_rgba(0,0,0,0.18)] md:p-8">
           {submitted ? (
             <div className="flex flex-1 flex-col items-center justify-center text-center">
-              <div className="flex size-16 items-center justify-center rounded-full bg-linear-to-br from-brand-deep to-brand-ocean">
+              <div className="flex size-20 items-center justify-center rounded-full bg-linear-to-br from-brand-deep to-brand-ocean">
                 <CheckIcon />
               </div>
-              <p className="mt-6 font-sans text-xl leading-7 tracking-[-1px] text-black">
+              <p className="mt-6 font-sans text-2xl leading-8 tracking-[-1px] text-black">
                 Application received
               </p>
-              <p className="mt-2 max-w-[18rem] font-sans text-sm leading-[1.375rem] tracking-[-0.5px] text-black/60">
+              <p className="mt-2 max-w-[20rem] font-sans text-base leading-6 tracking-[-0.5px] text-black/60">
                 We review every application within 24 hours. If you are a good
                 fit, our team will reach out to schedule a call.
               </p>
@@ -158,16 +158,16 @@ export default function ApplyForm() {
             <>
               {/* Header: step number + progress */}
               <div className="flex items-center justify-between">
-                <span className="flex size-7 items-center justify-center rounded-lg bg-linear-to-br from-brand-deep to-brand-ocean font-sans text-sm text-white">
+                <span className="flex size-9 items-center justify-center rounded-lg bg-linear-to-br from-brand-deep to-brand-ocean font-sans text-base text-white">
                   {step + 1}
                 </span>
-                <span className="font-sans text-sm tracking-[-1px] text-black/60">
+                <span className="font-sans text-base tracking-[-1px] text-black/60">
                   {step + 1}/{STEPS.length}
                 </span>
               </div>
 
               {/* Question */}
-              <p className="mt-6 font-sans text-xl leading-7 tracking-[-1px] text-black">
+              <p className="mt-6 font-sans text-2xl leading-8 tracking-[-1px] text-black">
                 {current.question}
               </p>
 
@@ -182,7 +182,7 @@ export default function ApplyForm() {
                         type="button"
                         aria-pressed={selected}
                         onClick={() => selectOption(option)}
-                        className={`flex h-9 w-[12.5rem] cursor-pointer items-center rounded-lg px-3 text-left font-sans text-sm tracking-[-1px] transition-colors ${
+                        className={`flex h-11 w-[15.5rem] cursor-pointer items-center rounded-lg px-4 text-left font-sans text-base tracking-[-1px] transition-colors ${
                           selected
                             ? "bg-linear-to-br from-brand-deep to-brand-ocean text-white"
                             : "bg-surface-muted text-black hover:bg-[#dde7ec]"
@@ -194,27 +194,27 @@ export default function ApplyForm() {
                   })}
                 </div>
               ) : (
-                <div className="mt-7 flex flex-col gap-4">
+                <div className="mt-7 flex flex-col gap-5">
                   <label className="block">
-                    <span className="font-sans text-sm text-black">Name*</span>
+                    <span className="font-sans text-base text-black">Name*</span>
                     <input
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Martin Nikolov"
-                      className="mt-1 block h-7 w-full border-b border-black/20 font-sans text-sm text-black placeholder:text-black/40 focus:border-brand-ocean focus:outline-none"
+                      className="mt-1 block h-9 w-full border-b border-black/20 font-sans text-base text-black placeholder:text-black/40 focus:border-brand-ocean focus:outline-none"
                     />
                   </label>
                   <label className="block">
-                    <span className="font-sans text-sm text-black">
+                    <span className="font-sans text-base text-black">
                       Phone number*
                     </span>
-                    <span className="mt-1 flex h-7 items-center gap-2 border-b border-black/20 focus-within:border-brand-ocean">
+                    <span className="mt-1 flex h-9 items-center gap-2 border-b border-black/20 focus-within:border-brand-ocean">
                       <select
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
                         aria-label="Country code"
-                        className="w-12 cursor-pointer appearance-auto bg-transparent font-sans text-sm text-black focus:outline-none"
+                        className="w-14 cursor-pointer appearance-auto bg-transparent font-sans text-base text-black focus:outline-none"
                       >
                         {PHONE_COUNTRIES.map(({ code, flag, dial }) => (
                           <option key={code} value={code}>
@@ -228,18 +228,18 @@ export default function ApplyForm() {
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="(201) 555-0123"
                         aria-label="Phone number"
-                        className="h-full w-full font-sans text-sm text-black placeholder:text-black/40 focus:outline-none"
+                        className="h-full w-full font-sans text-base text-black placeholder:text-black/40 focus:outline-none"
                       />
                     </span>
                   </label>
                   <label className="block">
-                    <span className="font-sans text-sm text-black">Email*</span>
+                    <span className="font-sans text-base text-black">Email*</span>
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="name@example.com"
-                      className="mt-1 block h-7 w-full border-b border-black/20 font-sans text-sm text-black placeholder:text-black/40 focus:border-brand-ocean focus:outline-none"
+                      className="mt-1 block h-9 w-full border-b border-black/20 font-sans text-base text-black placeholder:text-black/40 focus:border-brand-ocean focus:outline-none"
                     />
                   </label>
                 </div>
@@ -251,7 +251,7 @@ export default function ApplyForm() {
                   type="button"
                   onClick={() => setStep(Math.max(0, step - 1))}
                   disabled={step === 0}
-                  className={`font-sans text-base tracking-[-1px] text-black transition-opacity ${
+                  className={`font-sans text-lg tracking-[-1px] text-black transition-opacity ${
                     step === 0
                       ? "cursor-default opacity-20"
                       : "cursor-pointer opacity-60 hover:text-brand-ocean hover:opacity-100"
@@ -263,14 +263,14 @@ export default function ApplyForm() {
                   type="button"
                   onClick={next}
                   disabled={!canContinue}
-                  className={`flex h-[2.375rem] w-[7.25rem] items-center justify-between rounded-lg bg-linear-to-br from-brand-deep to-brand-ocean pl-4 pr-1 transition-[opacity,background-image,background-color] duration-200 enabled:hover:bg-none enabled:hover:bg-brand-ocean ${
+                  className={`flex h-12 w-[9rem] items-center justify-between rounded-lg bg-linear-to-br from-brand-deep to-brand-ocean pl-5 pr-1.5 transition-[opacity,background-image,background-color] duration-200 enabled:hover:bg-none enabled:hover:bg-brand-ocean ${
                     canContinue ? "cursor-pointer" : "cursor-default opacity-50"
                   }`}
                 >
-                  <span className="font-sans text-base tracking-[-1px] text-white">
+                  <span className="font-sans text-lg tracking-[-1px] text-white">
                     {isLast ? "Submit" : "Next"}
                   </span>
-                  <span className="flex size-[1.875rem] items-center justify-center rounded-lg bg-white">
+                  <span className="flex size-9 items-center justify-center rounded-lg bg-white">
                     <ArrowRightIcon />
                   </span>
                 </button>

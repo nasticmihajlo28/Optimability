@@ -207,8 +207,8 @@ export default function WhatFoundersAreSaying() {
           ))}
         </div>
 
-        {/* Arrows below the cards — mobile & tablet */}
-        <div className="mt-8 flex justify-center lg:hidden">
+        {/* Arrows below the cards, left-aligned — mobile & tablet */}
+        <div className="mt-8 flex justify-start lg:hidden">
           <ArrowButtons index={index} maxIndex={maxIndex} setIndex={setIndex} />
         </div>
       </div>

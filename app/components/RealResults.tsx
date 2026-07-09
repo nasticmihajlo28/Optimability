@@ -1,4 +1,15 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import videoThumbnail from "../images/real-results-video-thumbnail.jpg";
+
+/* Hashed ID behind the share link optimability.wistia.com/s/r0mmp4jf0x1c9w9 */
+const WISTIA_VIDEO_ID = "ovkssreg4a";
+
 export default function RealResults() {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <section
       id="testimonials"
@@ -20,22 +31,45 @@ export default function RealResults() {
         </p>
 
 
-        {/* Video placeholder (536x740) — the real video drops in here later */}
-        <div className="relative mt-10 aspect-[536/740] w-full max-w-[536px] rounded-lg bg-[#d9d9d9] shadow-[2px_2px_12px_0px_rgba(0,0,0,0.2)] xl:absolute xl:left-[672px] xl:top-[80px] xl:mt-0 xl:aspect-auto xl:h-[740px] xl:w-[536px]">
-          {/* Play button overlay */}
-          <div className="absolute left-1/2 top-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/40 backdrop-blur-[5px]">
-            <svg
-              className="size-8"
-              viewBox="0 0 32 32"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M10.668 6.85352V25.5202L25.3346 16.1868L10.668 6.85352Z"
-                fill="white"
+        {/* Video (536x740) */}
+        <div className="relative mt-10 aspect-[536/740] w-full max-w-[536px] overflow-hidden rounded-lg bg-[#d9d9d9] shadow-[2px_2px_12px_0px_rgba(0,0,0,0.2)] xl:absolute xl:left-[672px] xl:top-[80px] xl:mt-0 xl:aspect-auto xl:h-[740px] xl:w-[536px]">
+          {isPlaying ? (
+            <iframe
+              src={`https://fast.wistia.net/embed/iframe/${WISTIA_VIDEO_ID}?autoPlay=true`}
+              title="Sam Zia on how Optimability changed his health"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+              className="size-full border-0"
+            />
+          ) : (
+            <>
+              <Image
+                src={videoThumbnail}
+                alt="Sam Zia on how Optimability changed his health"
+                fill
+                sizes="536px"
+                className="object-cover"
               />
-            </svg>
-          </div>
+              <button
+                type="button"
+                aria-label="Play video"
+                onClick={() => setIsPlaying(true)}
+                className="absolute left-1/2 top-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/40 backdrop-blur-[5px] transition-[transform,background-color] duration-200 hover:scale-105 hover:bg-brand-ocean/60"
+              >
+                <svg
+                  className="size-8"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M10.668 6.85352V25.5202L25.3346 16.1868L10.668 6.85352Z"
+                    fill="white"
+                  />
+                </svg>
+              </button>
+            </>
+          )}
         </div>
       </div>
     </section>
