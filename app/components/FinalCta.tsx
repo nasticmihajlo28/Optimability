@@ -72,7 +72,7 @@ const COLUMN_TWO: Testimonial[] = [
 
 function TestimonialCard({ quote, name, role, avatar }: Testimonial) {
   return (
-    <li className="flex h-[18.25rem] flex-col justify-between rounded-xl bg-white/[0.07] p-5">
+    <li className="flex h-[18.25rem] w-[19.5rem] shrink-0 flex-col justify-between rounded-xl bg-white/[0.07] p-5">
       <blockquote className="font-sans text-base leading-6 tracking-[-0.5px] text-white">
         {quote}
       </blockquote>
@@ -100,35 +100,37 @@ function TestimonialCard({ quote, name, role, avatar }: Testimonial) {
   );
 }
 
-/* Endless upward scroll: two identical lists inside a container translated
-   by -50% per loop. The negative delay offsets the phase so the columns
-   start staggered, as in the design. */
-function MarqueeColumn({
+/* Endless sideways scroll: two identical lists translated by -50% per loop.
+   The negative delay offsets the phase; `reverse` flips the direction so the
+   two rows travel opposite ways. */
+function MarqueeRow({
   items,
   duration,
   delay,
+  reverse = false,
 }: {
   items: Testimonial[];
   duration: string;
   delay: string;
+  reverse?: boolean;
 }) {
   return (
-    <div className="w-[19.5rem] shrink-0">
-      <div
-        className="animate-marquee-y flex flex-col motion-reduce:[animation-play-state:paused]"
-        style={{ animationDuration: duration, animationDelay: delay }}
-      >
-        <ul className="flex flex-col gap-6 pb-6">
-          {items.map((t) => (
-            <TestimonialCard key={t.name} {...t} />
-          ))}
-        </ul>
-        <ul aria-hidden className="flex flex-col gap-6 pb-6">
-          {items.map((t) => (
-            <TestimonialCard key={`${t.name}-copy`} {...t} />
-          ))}
-        </ul>
-      </div>
+    <div
+      className={`flex w-max animate-marquee motion-reduce:animate-none ${
+        reverse ? "[animation-direction:reverse]" : ""
+      }`}
+      style={{ animationDuration: duration, animationDelay: delay }}
+    >
+      <ul className="flex gap-6 pr-6">
+        {items.map((t) => (
+          <TestimonialCard key={t.name} {...t} />
+        ))}
+      </ul>
+      <ul aria-hidden className="flex gap-6 pr-6">
+        {items.map((t) => (
+          <TestimonialCard key={`${t.name}-copy`} {...t} />
+        ))}
+      </ul>
     </div>
   );
 }
@@ -137,12 +139,12 @@ export default function FinalCta() {
   return (
     <section
       id="qualify"
-      className="hero-gradient mt-16 w-full overflow-hidden px-4 md:mt-20 lg:mt-[6.25rem]"
+      className="hero-gradient mt-16 w-full overflow-hidden pb-16 md:mt-20 md:pb-20 lg:mt-[6.25rem]"
       aria-label="Ready to let Optimability run your health"
     >
-      <div className="relative mx-auto w-full max-w-[82.5rem]">
-        {/* Copy + CTA */}
-        <div className="flex max-w-[38rem] flex-col justify-center pt-16 md:pt-20 lg:min-h-[55rem] lg:py-20">
+      {/* Copy + CTA */}
+      <div className="mx-auto w-full max-w-[82.5rem] px-4">
+        <div className="flex max-w-[38rem] flex-col pt-16 md:pt-20">
           <h2 className="font-jakarta text-[2rem] font-normal capitalize leading-[2.5rem] tracking-[-1px] text-white md:text-[2.5rem] md:leading-[3rem] md:tracking-[-1.5px] lg:text-[3.25rem] lg:leading-[3.75rem] lg:tracking-[-2px]">
             Ready To Let Optimability Run Your Health
           </h2>
@@ -154,17 +156,13 @@ export default function FinalCta() {
             <CtaButton />
           </div>
         </div>
+      </div>
 
-        {/* Testimonial columns — in flow below the copy on mobile/tablet,
-            absolutely positioned to the right of it from lg up */}
-        <div className="mt-12 flex h-[30rem] justify-center gap-6 overflow-hidden [mask-image:linear-gradient(180deg,transparent_0%,black_12%,black_78%,transparent_100%)] lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-auto lg:justify-start">
-          <MarqueeColumn items={COLUMN_ONE} duration="55s" delay="-8.4s" />
-          {/* second column needs md width in flow, xl width next to the copy */}
-          <div className="hidden md:block lg:hidden xl:block">
-            <MarqueeColumn items={COLUMN_TWO} duration="70s" delay="-2.7s" />
-          </div>
-        </div>
-        <div aria-hidden className="h-16 md:h-20 lg:hidden" />
+      {/* Testimonial rows scrolling sideways in opposite directions,
+          fading out toward both edges */}
+      <div className="mt-12 flex w-full flex-col gap-6 overflow-hidden [mask-image:linear-gradient(90deg,transparent_0%,black_10%,black_90%,transparent_100%)] md:mt-16">
+        <MarqueeRow items={COLUMN_ONE} duration="55s" delay="-8.4s" />
+        <MarqueeRow items={COLUMN_TWO} duration="70s" delay="-2.7s" reverse />
       </div>
     </section>
   );

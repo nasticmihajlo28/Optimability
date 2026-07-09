@@ -85,19 +85,24 @@ function TestimonialCard({ quote, name, role, avatar }: Testimonial) {
   );
 }
 
-/* Endless sideways scroll: two identical lists translated by -50% per loop */
+/* Endless sideways scroll: two identical lists translated by -50% per loop.
+   `reverse` flips the direction so the two rows travel opposite ways. */
 function MarqueeRow({
   items,
   duration,
   delay,
+  reverse = false,
 }: {
   items: Testimonial[];
   duration: string;
   delay: string;
+  reverse?: boolean;
 }) {
   return (
     <div
-      className="flex w-max animate-marquee motion-reduce:animate-none"
+      className={`flex w-max animate-marquee motion-reduce:animate-none ${
+        reverse ? "[animation-direction:reverse]" : ""
+      }`}
       style={{ animationDuration: duration, animationDelay: delay }}
     >
       <ul className="flex gap-6 pr-6">
@@ -131,7 +136,7 @@ export default function HelpedFounders() {
 
       <div className="relative mt-12 flex w-full flex-col gap-6 overflow-hidden">
         <MarqueeRow items={TESTIMONIALS} duration="60s" delay="-12s" />
-        <MarqueeRow items={ROW_TWO} duration="75s" delay="-31s" />
+        <MarqueeRow items={ROW_TWO} duration="75s" delay="-31s" reverse />
 
         {/* Edge fades */}
         <div
