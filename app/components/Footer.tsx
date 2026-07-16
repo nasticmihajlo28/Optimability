@@ -30,8 +30,8 @@ const NAV_COLUMNS: {
   {
     title: "Legal",
     links: [
-      { label: "Terms", href: "#terms" },
-      { label: "Privacy", href: "#privacy" },
+      { label: "Terms", href: "/terms" },
+      { label: "Privacy", href: "/privacy" },
     ],
   },
 ];
