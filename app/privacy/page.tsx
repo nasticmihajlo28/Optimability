@@ -124,9 +124,10 @@ const SECTIONS: LegalSection[] = [
 export default function PrivacyPage() {
   return (
     <LegalPage
-      badge="Privacy"
+      badge="Privacy Policy"
       title="Our Privacy Policy"
       subtitle="Learn how we handle your personal information and ensure your privacy and data security on our platform."
+      cardTitle="Information We Collect"
       sections={SECTIONS}
     />
   );

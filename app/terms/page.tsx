@@ -149,8 +149,9 @@ export default function TermsPage() {
   return (
     <LegalPage
       badge="Terms"
-      title="Our Terms of Service"
+      title="Our Terms Of Service"
       subtitle="The agreement that governs your use of Optimability's services and platform."
+      cardTitle="Terms"
       sections={SECTIONS}
     />
   );
